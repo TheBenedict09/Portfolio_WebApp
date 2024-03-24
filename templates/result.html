@@ -1,0 +1,26 @@
+<!-- result.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Details</title>
+    <link rel="stylesheet" href="/static/css/result.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="heading">Travel Details</h1>
+        <div class="cards">
+            {% for entry in data %}
+            <div class="card">
+                <div class="card-header">Date of Journey: {{ entry['date'] }}</div>
+                <div class="card-body">
+                    <p><strong>Source:</strong> {{ entry['source'] }}</p>
+                    <p><strong>Destination:</strong> {{ entry['destination'] }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>

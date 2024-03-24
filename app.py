@@ -1,4 +1,5 @@
-from flask import Flask, render_template
+import json
+from flask import Flask, redirect, render_template, request, url_for
 
 app = Flask(__name__)
 
@@ -11,7 +12,7 @@ def resume():
     return render_template('resume.html')
 
 @app.route('/education')
-def education():
+def education():    
     return render_template('education.html')
 
 @app.route('/skills')
@@ -33,6 +34,18 @@ def contact():
 @app.route('/aboutMe')
 def aboutMe():
     return render_template('aboutMe.html')
+
+travel_data = []
+
+@app.route('/form', methods=['GET', 'POST'])
+def index():
+    if request.method == 'POST':
+        form_data = request.form
+        # Store the form data
+        travel_data.append(form_data)
+        return render_template('result.html', data=travel_data)
+    return render_template('form.html')
+
 
 if __name__ == "__main__":
     app.run(debug=True)
